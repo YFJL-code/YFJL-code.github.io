@@ -158,7 +158,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yfjl-code.github.io/2024/10/29/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://yfjl-code.github.io/2023/09/29/about/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/icon.png">
@@ -176,7 +176,10 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/29/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Pandas数据清洗</a>
+          
+              <span class="post-sticky-flag" title="置顶">
+                <i class="fa fa-thumbtack"></i>
+              </span><a href="/2023/09/29/about/" class="post-title-link" itemprop="url">about</a>
         </h2>
 
         <div class="post-meta-container">
@@ -187,14 +190,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-10-29 20:38:08" itemprop="dateCreated datePublished" datetime="2024-10-29T20:38:08+08:00">2024-10-29</time>
+      <time title="创建时间：2023-09-29 20:38:08" itemprop="dateCreated datePublished" datetime="2023-09-29T20:38:08+08:00">2023-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-18 22:20:10" itemprop="dateModified" datetime="2025-08-18T22:20:10+08:00">2025-08-18</time>
+      <time title="修改时间：2025-08-20 22:22:43" itemprop="dateModified" datetime="2025-08-20T22:22:43+08:00">2025-08-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -202,7 +205,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
     </span>
 
@@ -216,552 +219,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、Numpy"><a href="#一、Numpy" class="headerlink" title="一、Numpy"></a>一、Numpy</h1><h1 id="二、Pandas"><a href="#二、Pandas" class="headerlink" title="二、Pandas"></a>二、Pandas</h1><h2 id="1-Series"><a href="#1-Series" class="headerlink" title="1.Series"></a>1.Series</h2><h2 id="2、Dataframe"><a href="#2、Dataframe" class="headerlink" title="2、Dataframe"></a>2、Dataframe</h2><h3 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h3><hr>
-<h5 id="1-1-插入行"><a href="#1-1-插入行" class="headerlink" title="1.1 插入行"></a>1.1 插入行</h5><p>append:</p>
-<ul>
-<li>Series</li>
-<li>DataFrame</li>
-<li>字典</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#插入Series</span></span><br><span class="line">s = pd.Series([<span class="number">77</span>, <span class="number">4</span>, <span class="number">66</span>], index=[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>, <span class="string">&#x27;Height&#x27;</span>])</span><br><span class="line">df = df.append(s,ignore_index=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#插入DataFrame</span></span><br><span class="line">df = df.append(df1,ignore_index=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#插入字典</span></span><br><span class="line">dict_var = &#123;<span class="string">&#x27;Name&#x27;</span> : <span class="number">77</span>, <span class="string">&#x27;Age&#x27;</span> : <span class="number">4</span>, <span class="string">&#x27;Height&#x27;</span> : <span class="number">66</span>&#125;</span><br><span class="line">df = df.append(dict_var,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="1-2-插入列"><a href="#1-2-插入列" class="headerlink" title="1.2 插入列"></a>1.2 插入列</h5><p>insert : 按位置插入</p>
-<ul>
-<li>index1 : 插入列位置</li>
-<li>index2 : 命名列名</li>
-<li>index3 : 插入值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.insert(<span class="number">0</span>, <span class="string">&quot;port_qr&quot;</span>, <span class="string">&#x27;EDG000000123213&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df1.insert(<span class="number">2</span>,<span class="string">&#x27;birth&#x27;</span>,[<span class="string">&#x27;1995-07-01&#x27;</span>,<span class="string">&#x27;1998-09-04&#x27;</span>,<span class="string">&#x27;1993-11-03&#x27;</span>,<span class="string">&#x27;1994-04-17&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&quot;port_qr&quot;</span>] = <span class="string">&#x27;EDG000000123213&#x27;</span></span><br><span class="line"></span><br><span class="line">df.loc[<span class="string">&quot;port_qr&quot;</span>] = <span class="string">&#x27;EDG000000123213&#x27;</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&quot;port_qr&quot;</span>] = [<span class="string">&quot;EDG000000123213&quot;</span>,<span class="string">&quot;EDG000000123214&quot;</span>,<span class="string">&quot;EDG000000123215&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="1-3-单个值插入"><a href="#1-3-单个值插入" class="headerlink" title="1.3 单个值插入"></a>1.3 单个值插入</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([])</span><br><span class="line">df.loc[<span class="number">0</span>, <span class="string">&quot;year&quot;</span>] = <span class="string">&#x27;jack&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="2、删"><a href="#2、删" class="headerlink" title="2、删"></a>2、删</h3><hr>
-<h5 id="2-1-删除列"><a href="#2-1-删除列" class="headerlink" title="2.1 删除列"></a>2.1 删除列</h5><p>在drop()函数中直接给出要删除的列的列标签就可以删除列</p>
-<p>drop()函数设置了两个参数：</p>
-<ul>
-<li>第1个参数以列表的形式给出要删除的行或列的标签；</li>
-<li>第2个参数axis用于设置按行删除还是按列删除;<ul>
-<li>设置为0表示按行删除（即第1个参数中给出的标签是行标签）;</li>
-<li>设置为1表示按列删除（即第1个参数中给出的标签是列标签）。</li>
-</ul>
-</li>
-<li>还可以通过列序号来获取列标签，然后作为drop()函数的第1个参数使用。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df.drop(df.columns[[<span class="number">3</span>,<span class="number">6</span>]], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">df.drop([<span class="string">&#x27;成本价(元/个)&#x27;</span>, <span class="string">&#x27;成本(元)&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">df.drop(columns=[<span class="string">&#x27;成本价(元/个)&#x27;</span>, <span class="string">&#x27;成本(元)&#x27;</span>], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="2-2-删除行"><a href="#2-2-删除行" class="headerlink" title="2.2 删除行"></a>2.2 删除行</h5><p>删除行的方法和删除列的方法类似，都要用到drop()函数，只不过需要将参数axis设置为0，其缺省值是0，可以不设。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data.drop([<span class="string">&#x27;a001&#x27;</span>,<span class="string">&#x27;a003&#x27;</span>], axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">data.drop(data.index[[<span class="number">0</span>,<span class="number">2</span>]])</span><br><span class="line"></span><br><span class="line">data.drop(index=[<span class="string">&#x27;a001&#x27;</span>,<span class="string">&#x27;a003&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="2-3-多行多列删除"><a href="#2-3-多行多列删除" class="headerlink" title="2.3 多行多列删除"></a>2.3 多行多列删除</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_org = df.copy()</span><br><span class="line">df_org.drop(index=[<span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Dave&#x27;</span>, <span class="string">&#x27;Frank&#x27;</span>],columns=[<span class="string">&#x27;state&#x27;</span>, <span class="string">&#x27;point&#x27;</span>], inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="3、查"><a href="#3、查" class="headerlink" title="3、查"></a>3、查</h3><h4 id="3-1-查询值"><a href="#3-1-查询值" class="headerlink" title="3.1 查询值"></a>3.1 查询值</h4><h5 id="3-1-1基本方法"><a href="#3-1-1基本方法" class="headerlink" title="3.1.1基本方法"></a>3.1.1基本方法</h5><h6 id="行、列索引查询"><a href="#行、列索引查询" class="headerlink" title="行、列索引查询"></a>行、列索引查询</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#iloc[行索引,列索引]</span></span><br><span class="line"><span class="comment">#如果说loc是按照索引（index）的值来选取的话，那么iloc就是按照索引的位置来进行选取。iloc不关心索引的具体值是多少，只关心位置是多少，所以使用iloc时方括号中只能使用数值。</span></span><br><span class="line"></span><br><span class="line">df.iloc[<span class="number">3</span>: <span class="number">18</span>, :]       <span class="comment">#index = [3~17]  读取行数</span></span><br><span class="line">df.iloc[: <span class="number">18</span>, :]        <span class="comment">#index = [0~17]  读取行数</span></span><br><span class="line">df.iloc[<span class="number">18</span>, <span class="number">17</span>]         <span class="comment">#x = 18 , y = 17  单个值</span></span><br><span class="line"></span><br><span class="line">df.iloc[:,[<span class="number">1</span>,<span class="number">2</span>]].head()  <span class="comment">#index = all ,columns_index = [1 ,2] 前五行</span></span><br><span class="line">df.iloc[[<span class="number">1</span>,<span class="number">12</span>,<span class="number">34</span>],[<span class="number">0</span>,<span class="number">2</span>]] <span class="comment">#index = [1,12,34] ,columns_index = [0,2]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#iat对于iloc的关系就像at对于loc的关系，是一种更快的基于索引位置的选择方法，同at一样只能访问单个元素。</span></span><br><span class="line">df.iat[<span class="number">1</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="行索引查询"><a href="#行索引查询" class="headerlink" title="行索引查询"></a>行索引查询</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#[]切片方法（只支持行索引）</span></span><br><span class="line">res = df[<span class="number">1</span>:<span class="number">2</span>]    <span class="comment">#切去 index = 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#loc 行索引（1~5）</span></span><br><span class="line">data.loc[<span class="number">1</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="列名查询"><a href="#列名查询" class="headerlink" title="列名查询"></a>列名查询</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单列</span></span><br><span class="line">res = df[<span class="string">&quot;column_Name&quot;</span>]     <span class="comment">#得到Series对象   res.tolist()  转成list对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#多列</span></span><br><span class="line">res = df[[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">res = df.reindex(columns=[<span class="string">&quot;Name&quot;</span>, <span class="string">&quot;Age&quot;</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="行索引-列名查询"><a href="#行索引-列名查询" class="headerlink" title="行索引+列名查询"></a>行索引+列名查询</h6><p>建议：优先选择loc（因为loc在对DataFrame进行重新赋值操作时会避免chained indexing问题）</p>
-<p>注意：at的使用方法与loc类似，但是比loc有更快的访问数据的速度，而且只能访问单个元素，不能访问多个元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询行索引（0~6）和列名（&#x27;rnd_1&#x27;, &#x27;rnd_2&#x27;）</span></span><br><span class="line">data[:<span class="number">7</span>][[<span class="string">&#x27;rnd_1&#x27;</span>, <span class="string">&#x27;rnd_2&#x27;</span>]] </span><br><span class="line"></span><br><span class="line"><span class="comment">#查询行索引（2~4）和列名（&#x27;rnd_2&#x27;, &#x27;fecha&#x27;）</span></span><br><span class="line">data.loc[<span class="number">2</span>:<span class="number">4</span>, [<span class="string">&#x27;rnd_2&#x27;</span>, <span class="string">&#x27;fecha&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">行列都按区间查询</span><br><span class="line">df.loc[<span class="string">&#x27;2018-01-03&#x27;</span>:<span class="string">&#x27;2018-01-05&#x27;</span>, <span class="string">&#x27;bWendu&#x27;</span>:<span class="string">&#x27;fengxiang&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查询行索引（1）和列名（&#x27;Name&#x27;）</span></span><br><span class="line">res = df.at[<span class="number">1</span>, <span class="string">&#x27;Name&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="日期查询"><a href="#日期查询" class="headerlink" title="日期查询"></a>日期查询</h6><p>注意：loc能够选择在两个特定日期之间的数据，需要注意的是这两个日期必须都要在索引中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置日期列未索引</span></span><br><span class="line">data_fecha = data.set_index(<span class="string">&#x27;fecha&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成两个特定日期</span></span><br><span class="line">fecha_1 = dt.datetime(<span class="number">2013</span>, <span class="number">4</span>, <span class="number">14</span>)</span><br><span class="line">fecha_2 = dt.datetime(<span class="number">2013</span>, <span class="number">4</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成切片数据</span></span><br><span class="line">data_fecha.loc[fecha_1: fecha_2]</span><br></pre></td></tr></table></figure>
-
-
-
-<p>注意：以上说过的几种方法都要求查询的秩在索引中，或者位置不超过长度范围，而ix允许你得到不在DataFrame索引中的数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成两个特定日期</span></span><br><span class="line">date_1 = dt.datetime(<span class="number">2013</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">8</span>, <span class="number">30</span>)</span><br><span class="line">date_2 = dt.datetime(<span class="number">2013</span>, <span class="number">1</span>, <span class="number">13</span>, <span class="number">4</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成切片数据</span></span><br><span class="line">data_fecha.ix[date_1: date_2]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="等式条件"><a href="#等式条件" class="headerlink" title="等式条件"></a>等式条件</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">&#x27;性别&#x27;</span>] == <span class="string">&#x27;男&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="不等式条件"><a href="#不等式条件" class="headerlink" title="不等式条件"></a>不等式条件</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[df[<span class="string">&#x27;login_date&#x27;</span>] != <span class="number">20210623</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="存在条件查询"><a href="#存在条件查询" class="headerlink" title="存在条件查询"></a>存在条件查询</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存在</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;age&#x27;</span>].isin([<span class="number">21</span>,<span class="number">19</span>])]</span><br><span class="line"></span><br><span class="line"><span class="comment">#不存在</span></span><br><span class="line">df.loc[~df[<span class="string">&#x27;age&#x27;</span>].isin([<span class="number">21</span>,<span class="number">19</span>])]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="多条件"><a href="#多条件" class="headerlink" title="多条件"></a>多条件</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">&#x27;实发工资&#x27;</span>]&gt;<span class="number">1000</span>) &amp; (df[<span class="string">&#x27;性别&#x27;</span>] == <span class="string">&#x27;男&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">df.loc[(df[<span class="string">&#x27;close&#x27;</span>] &lt; <span class="number">3000</span>) &amp; (df[<span class="string">&#x27;amount&#x27;</span>] &lt; <span class="number">100000000</span>)]</span><br><span class="line"></span><br><span class="line">df.loc[df[<span class="string">&#x27;Dim_No&#x27;</span>].isin([<span class="string">&quot;smith&quot;</span>,<span class="string">&quot;jack&quot;</span>]), <span class="string">&#x27;judge&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="遍历查询"><a href="#遍历查询" class="headerlink" title="遍历查询"></a>遍历查询</h6><p>方法一：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> excel_path ,measure_id <span class="keyword">in</span> <span class="built_in">zip</span>(df[<span class="string">&quot;excel_path&quot;</span>] ,df[<span class="string">&quot;measure_id&quot;</span>]):</span><br></pre></td></tr></table></figure>
-
-
-
-<p>方法二：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">row_num = df.shape[<span class="number">0</span>]    <span class="comment">#行数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">	excel_path = df.loc[i, [<span class="string">&#x27;excel_path&#x27;</span>]]</span><br><span class="line">	measure_id = df.loc[i, [<span class="string">&#x27;measure_id&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="3-1-2-高级查询"><a href="#3-1-2-高级查询" class="headerlink" title="3.1.2 高级查询"></a>3.1.2 高级查询</h5><h6 id="首字名匹配"><a href="#首字名匹配" class="headerlink" title="首字名匹配"></a>首字名匹配</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[[x.startswith(<span class="string">&#x27;张&#x27;</span>) <span class="keyword">for</span> x <span class="keyword">in</span> df[<span class="string">&#x27;姓名&#x27;</span>]]]</span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;姓名&#x27;</span>].<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x.startswith(<span class="string">&#x27;张&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="关键字匹配"><a href="#关键字匹配" class="headerlink" title="关键字匹配"></a>关键字匹配</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[ df[<span class="string">&#x27;证券名称&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;联通&#x27;</span>) ]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##自定义函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query_data</span>(<span class="params">df</span>):</span><br><span class="line">    <span class="keyword">return</span> df.index.<span class="built_in">str</span>.startswith(<span class="string">&#x27;2018-09&#x27;</span>) &amp; (df[<span class="string">&#x27;close&#x27;</span>] &lt; <span class="number">3000</span>) &amp; (df[<span class="string">&#x27;amount&#x27;</span>] &lt; <span class="number">100000000</span>)</span><br><span class="line">df.loc[query_data,:]</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="3-2-查询其他"><a href="#3-2-查询其他" class="headerlink" title="3.2 查询其他"></a>3.2 查询其他</h4><h6 id="查询行数和列数"><a href="#查询行数和列数" class="headerlink" title="查询行数和列数"></a>查询行数和列数</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.shape[0]    #行数</span><br><span class="line">df.shape[1]    #列数</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="查询列名"><a href="#查询列名" class="headerlink" title="查询列名"></a>查询列名</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column_list = measure_table.columns.values.tolist()</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="查询是否为空"><a href="#查询是否为空" class="headerlink" title="查询是否为空"></a>查询是否为空</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not data.empty:</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="查询单列第一个值"><a href="#查询单列第一个值" class="headerlink" title="查询单列第一个值"></a>查询单列第一个值</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">halt_machine_reason = df[&quot;halt_machine_reason&quot;].iloc[0]  #0与索引无关</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="4、改"><a href="#4、改" class="headerlink" title="4、改"></a>4、改</h3><h5 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h5><h6 id="列数值"><a href="#列数值" class="headerlink" title="列数值"></a>列数值</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询即为改  loc</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="行数值"><a href="#行数值" class="headerlink" title="行数值"></a>行数值</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[1]=[&#x27;111&#x27;,&#x27;222&#x27;,&#x27;333&#x27;]</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="指定数值"><a href="#指定数值" class="headerlink" title="指定数值"></a>指定数值</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="number">0</span>, <span class="string">&quot;year&quot;</span>] = <span class="string">&#x27;jack&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="条件数值"><a href="#条件数值" class="headerlink" title="条件数值"></a>条件数值</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[df[&#x27;Dim_No&#x27;].isin([&quot;smith&quot;,&quot;jack&quot;]), &#x27;judge&#x27;] = &quot;NG&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h5><h6 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[&quot;measure_value&quot;] = df[&quot;measure_value&quot;].apply(lambda x: x[:8])   #保留前八</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_csv(&quot;D:\Desktop\DXYArea (1).csv&quot;,error_bad_lines=False)</span><br><span class="line"> </span><br><span class="line">print(data.columns)</span><br><span class="line">data[&#x27;country&#x27;] = data.apply(lambda x: 1 if x.countryName == x.provinceName else 0,axis=1)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="改数据类型"><a href="#改数据类型" class="headerlink" title="改数据类型"></a>改数据类型</h5><h6 id="关闭链式警告"><a href="#关闭链式警告" class="headerlink" title="关闭链式警告"></a>关闭链式警告</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#关闭链式警告</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;mode.chained_assignment&#x27;</span>, <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="单列"><a href="#单列" class="headerlink" title="单列"></a>单列</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[:, <span class="string">&#x27;yWendu&#x27;</span>] = df.loc[:, <span class="string">&#x27;yWendu&#x27;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;℃&#x27;</span>, <span class="string">&#x27;&#x27;</span>).astype(<span class="string">&#x27;int32&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="多列"><a href="#多列" class="headerlink" title="多列"></a>多列</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;excel_path&#x27;</span>,<span class="string">&#x27;modify_time&#x27;</span>]] = df[[<span class="string">&#x27;excel_path&#x27;</span>,<span class="string">&#x27;modify_time&#x27;</span>]].astype(<span class="string">&quot;str&quot;</span>)</span><br><span class="line"></span><br><span class="line">df[[<span class="string">&#x27;measure_value&#x27;</span>, <span class="string">&#x27;Nom&#x27;</span>]] = df[[<span class="string">&#x27;measure_value&#x27;</span>, <span class="string">&#x27;Nom&#x27;</span>]].apply(pd.to_numeric) <span class="comment">#强转s数值型</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="全部"><a href="#全部" class="headerlink" title="全部"></a>全部</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dates_df.astype(np.int64)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="修改字段名"><a href="#修改字段名" class="headerlink" title="修改字段名"></a>修改字段名</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.reindex(columns=[&quot;尺寸序号&quot;, &quot;基准寸&quot;]).rename(columns=&#123;&quot;尺寸序号&quot;: &quot;Dim_No&quot;, &quot;基准尺寸&quot;: &quot;Nom&quot;&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="转置"><a href="#转置" class="headerlink" title="转置"></a>转置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data, index=main_columns_name).T  # 分表（总）</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="修改索引"><a href="#修改索引" class="headerlink" title="修改索引"></a>修改索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置日期列未索引</span><br><span class="line">data_fecha = data.set_index(&#x27;fecha&#x27;,ascending = True)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="5、创建DataFrame"><a href="#5、创建DataFrame" class="headerlink" title="5、创建DataFrame"></a>5、创建DataFrame</h3><h5 id="5-1-空框架"><a href="#5-1-空框架" class="headerlink" title="5.1 空框架"></a>5.1 空框架</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pd.DataFrame()</span><br><span class="line"></span><br><span class="line">pd.DataFrame([],columns=[<span class="string">&quot;excel_path&quot;</span>,<span class="string">&quot;measure_id&quot;</span>,<span class="string">&quot;date&quot;</span>,<span class="string">&quot;modify_time&quot;</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5-2-列表形式"><a href="#5-2-列表形式" class="headerlink" title="5.2 列表形式"></a>5.2 列表形式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data = [[<span class="string">&#x27;Alex&#x27;</span>,<span class="number">10</span>],[<span class="string">&#x27;Bob&#x27;</span>,<span class="number">12</span>],[<span class="string">&#x27;Clarke&#x27;</span>,<span class="number">13</span>]]</span><br><span class="line">df = pd.DataFrame(data,columns=[<span class="string">&#x27;Name&#x27;</span>,<span class="string">&#x27;Age&#x27;</span>],dtype=<span class="built_in">float</span>) <span class="comment"># 将数字元素 自动转化为 浮点数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = [&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>&#125;,&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line">df1 = pd.DataFrame(data, index=[<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>], columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]) <span class="comment"># 指定表头都存在于 data，只取部分</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5-3-字典形式"><a href="#5-3-字典形式" class="headerlink" title="5.3 字典形式"></a>5.3 字典形式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;Name&#x27;</span>:[<span class="string">&#x27;Tom&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Steve&#x27;</span>, <span class="string">&#x27;Ricky&#x27;</span>],<span class="string">&#x27;Age&#x27;</span>:[<span class="number">28</span>,<span class="number">34</span>,<span class="number">29</span>,<span class="number">42</span>]&#125; <span class="comment"># 两组列元素，并且个数需要相同</span></span><br><span class="line">df = pd.DataFrame(data, index=[<span class="string">&#x27;rank1&#x27;</span>,<span class="string">&#x27;rank2&#x27;</span>,<span class="string">&#x27;rank3&#x27;</span>,<span class="string">&#x27;rank4&#x27;</span>]) <span class="comment"># 这里设定了 index 个数要和列表长度一致</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5-4-Series形式"><a href="#5-4-Series形式" class="headerlink" title="5.4 Series形式"></a>5.4 Series形式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">&#x27;one&#x27;</span> : pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], index=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]),</span><br><span class="line">   <span class="string">&#x27;two&#x27;</span> : pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], index=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])&#125;</span><br><span class="line"><span class="comment"># index 与序列长度相投</span></span><br><span class="line"><span class="comment"># 字典不同的 key 代表一个列的表头，pd.Series 作为 value 作为该列的元素</span></span><br><span class="line">df = pd.DataFrame(d)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="6-读取文件"><a href="#6-读取文件" class="headerlink" title="6.读取文件"></a>6.读取文件</h3><h5 id="6-1读取Excel"><a href="#6-1读取Excel" class="headerlink" title="6.1读取Excel"></a>6.1读取Excel</h5><h6 id="读取指定sheet"><a href="#读取指定sheet" class="headerlink" title="读取指定sheet"></a>读取指定sheet</h6><p>read_excel：</p>
-<ul>
-<li><p>excel_path 	:   绝对文件路径</p>
-</li>
-<li><p>sheet_name  ：表单名（1.      2.）</p>
-<ul>
-<li>确定名  ：sheet_name&#x3D;”报告模板”</li>
-<li>索引      ：sheet_name &#x3D; 0（默认）</li>
-</ul>
-</li>
-<li><p>header           ：字段名  （可以多重表头，例如：[1,2,3]）</p>
-</li>
-<li><p>names            ：自定义字段名，比如[‘rank1’,’rank2’,’rank3’,’rank4’],此时header&#x3D;None</p>
-</li>
-<li><p>usecols           ：读取列</p>
-<ul>
-<li>字母 			： usecols&#x3D;”B:G,N:Y”</li>
-<li>数字列表      ：usecols&#x3D;list(range(0, 85))</li>
-<li>字段名          ：usecols&#x3D;[“date”,”val”]</li>
-</ul>
-</li>
-<li><p>skipfooter      ：尾行跳过行数</p>
-</li>
-<li><p>skiprows        :  跳过指定行</p>
-<ul>
-<li>skiprows &#x3D; 1   跳过第一行</li>
-<li>skiprows &#x3D; 3   跳过前三行</li>
-<li>skiprows&#x3D;[1,3,5] 跳过第1,3,5行</li>
-<li>skiprows&#x3D;lambda x: x % 2 &#x3D;&#x3D; 0 跳过偶数行</li>
-</ul>
-</li>
-<li><p>dropna           ：axis (1:列  0:行)    how(all:全部   )</p>
-</li>
-<li><p>nrows             ：读取行数</p>
-</li>
-<li><p>dtype              ：数据类型    dtype&#x3D;str      dtype&#x3D;{0:”int64” , 3:”str”}</p>
-<ul>
-<li>int64</li>
-<li>float64</li>
-<li>bool</li>
-<li>datetime64</li>
-<li>timedelta[ns]</li>
-<li>str</li>
-</ul>
-</li>
-<li><p>index_col        :  指定索引列   比如：1.index_col &#x3D; 0     2.index_col &#x3D; [0,1]</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(excel_path, sheet_name=<span class="string">&quot;报告模板&quot;</span>, header=[<span class="number">1</span>], usecols=<span class="string">&quot;B:G,N:Y&quot;</span>, nrows=<span class="number">2</span>,dtype=<span class="built_in">str</span>,skipfooter=<span class="number">3</span>).dropna(axis=<span class="number">1</span>,how=<span class="string">&quot;all&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="读取全部sheet"><a href="#读取全部sheet" class="headerlink" title="读取全部sheet"></a>读取全部sheet</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#获取所有sheet的名称</span><br><span class="line">sheet_name_dataframe = pd.read_excel(excel_path, sheet_name=None)</span><br><span class="line">sheet_names = list(sheet_name_dataframe.keys())</span><br><span class="line"></span><br><span class="line">#循环遍历每张sheet表</span><br><span class="line">for i,sheet_name in enumerate(sheet_names):</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="6-2-读取CSV"><a href="#6-2-读取CSV" class="headerlink" title="6.2 读取CSV"></a>6.2 读取CSV</h5><p>读取指定CSV</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="6-3-读取txt"><a href="#6-3-读取txt" class="headerlink" title="6.3 读取txt"></a>6.3 读取txt</h5><hr>
-<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><h5 id="单值替换"><a href="#单值替换" class="headerlink" title="单值替换"></a>单值替换</h5><p>replace:</p>
-<ul>
-<li>index1 : 被替换值</li>
-<li>index2 : 替换值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.replace(<span class="number">1</span> , np.nan)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="多值替换"><a href="#多值替换" class="headerlink" title="多值替换"></a>多值替换</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.replace(&#123;<span class="number">1</span>:np.nan ,<span class="number">7</span>:<span class="number">5</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="7-缺失值NAN"><a href="#7-缺失值NAN" class="headerlink" title="7.缺失值NAN"></a>7.缺失值NAN</h3><h5 id="7-1-判断缺失值"><a href="#7-1-判断缺失值" class="headerlink" title="7.1 判断缺失值"></a>7.1 判断缺失值</h5><p>isnull :</p>
-<ul>
-<li>any  :  只要存在为NAN,则返回True</li>
-<li>all    :  全为NAN,则返回True</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">any</span>()</span><br><span class="line"></span><br><span class="line">df.notnull()</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="7-2-删除缺失值"><a href="#7-2-删除缺失值" class="headerlink" title="7.2 删除缺失值"></a>7.2 删除缺失值</h5><p>dropna:</p>
-<ul>
-<li><p>how  :   all  (删除整行都为缺失值的行)    any  (只要存在为NAN)</p>
-</li>
-<li><p>axis  :    1(列)       0(行)</p>
-</li>
-<li><p>thresh: thresh &#x3D; 2( nan累计大于等于2的删除 )</p>
-</li>
-</ul>
-<h6 id="删除行缺失值"><a href="#删除行缺失值" class="headerlink" title="删除行缺失值"></a>删除行缺失值</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.dropna()   			 <span class="comment">#删除数据表中含有缺失值的行</span></span><br><span class="line"></span><br><span class="line">df.dropna(how=<span class="string">&#x27;all&#x27;</span>)   <span class="comment">#删除整行都为缺失值的行</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="删除列缺失值"><a href="#删除列缺失值" class="headerlink" title="删除列缺失值"></a>删除列缺失值</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(axis=<span class="number">1</span>, how=<span class="string">&quot;all&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="7-3-缺失值的填充"><a href="#7-3-缺失值的填充" class="headerlink" title="7.3 缺失值的填充"></a>7.3 缺失值的填充</h5><h6 id="填充指定值"><a href="#填充指定值" class="headerlink" title="填充指定值"></a>填充指定值</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.fillna(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="多值填充"><a href="#多值填充" class="headerlink" title="多值填充"></a>多值填充</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.fillna(&#123;<span class="string">&#x27;成本价(元/个)&#x27;</span>: <span class="number">16</span>, <span class="string">&#x27;成本(元)&#x27;</span>: <span class="number">3364</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="复制上一行填充"><a href="#复制上一行填充" class="headerlink" title="复制上一行填充"></a>复制上一行填充</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.fillna(method = &quot;ffill&quot; ,limit = 2)   #limit:限制最多两次</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="8-重复值"><a href="#8-重复值" class="headerlink" title="8.重复值"></a>8.重复值</h3><h5 id="8-1-删除重复值"><a href="#8-1-删除重复值" class="headerlink" title="8.1 删除重复值"></a>8.1 删除重复值</h5><p>默认保留第一个重复值所在的行，删除其他重复值所在的行。</p>
-<p>keep：</p>
-<ul>
-<li>将参数keep设置为’first’，表示保留第一个重复值所在的行。</li>
-<li>如果要保留最后一个重复值所在的行，则将参数keep设置为’last’。</li>
-<li>还可以将参数keep设置为False，表示把重复值一个不留地全部删除。</li>
-</ul>
-<p>subset : 判断列，默认全部列</p>
-<p>inplace：是否替换</p>
-<p>ignore_index ：是否忽略重置index</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df.drop_duplicates()     			 <span class="comment">#整个所有列数据都要重复   保留第一个重复值</span></span><br><span class="line"></span><br><span class="line">df.drop_duplicates(subset=<span class="string">&#x27;产品&#x27;</span>,)		<span class="comment">#单列为判断条件</span></span><br><span class="line"></span><br><span class="line">df.drop_duplicates(subset = [<span class="string">&quot;measure_id&quot;</span> , <span class="string">&quot;machine_name&quot;</span>], keep=<span class="string">&quot;first&quot;</span>, inplace=<span class="literal">True</span>,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="8-2-提取重复值"><a href="#8-2-提取重复值" class="headerlink" title="8.2 提取重复值"></a>8.2 提取重复值</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.concat([df.drop_duplicates() , df.drop_duplicates(keep=<span class="literal">False</span>)]).drop_duplicates(keep=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="9-唯一值"><a href="#9-唯一值" class="headerlink" title="9.唯一值"></a>9.唯一值</h3><h5 id="提取唯一值"><a href="#提取唯一值" class="headerlink" title="提取唯一值"></a>提取唯一值</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;产品&#x27;</span>].unique()</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="判断唯一值"><a href="#判断唯一值" class="headerlink" title="判断唯一值"></a>判断唯一值</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;产品&#x27;</span>].is_unique()</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="10-排序与排名"><a href="#10-排序与排名" class="headerlink" title="10.排序与排名"></a>10.排序与排名</h3><h5 id="10-1-排序"><a href="#10-1-排序" class="headerlink" title="10.1 排序"></a>10.1 排序</h5><p>sort_values()函数的常用参数有两个：</p>
-<ul>
-<li>一个是by，用于指定要排序的列；</li>
-<li>另一个是ascending，用于指定排序方式是升序还是降序。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">&#x27;数量(个)&#x27;</span>, ascending=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="10-2-排名"><a href="#10-2-排名" class="headerlink" title="10.2 排名"></a>10.2 排名</h5><p>rank()函数的常用参数有两个：</p>
-<ul>
-<li>一个是method，用于指定数据有重复值时的处理方式；<ul>
-<li>average :  排名需要求平均值，例如：索引0和2的值都为7，则平均值为(7+6)&#x2F;2&#x3D;6.5；</li>
-<li>min :  排名取最小值</li>
-<li>max : 排名取最大值</li>
-<li>first : 则就取”人为的排名“这列的值。</li>
-</ul>
-</li>
-<li>另一个是ascending，用于指定排序方式是升序还是降序。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;利润(元)&#x27;</span>].rank(method=<span class="string">&#x27;average&#x27;</span>, ascending=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="11-合并"><a href="#11-合并" class="headerlink" title="11.合并"></a>11.合并</h3><hr>
-<h5 id="上下合并"><a href="#上下合并" class="headerlink" title="上下合并"></a>上下合并</h5><h6 id="concat拼接"><a href="#concat拼接" class="headerlink" title="concat拼接"></a>concat拼接</h6><ul>
-<li>dataframe拼接：将上下两dataframe拼接到一起，字段名匹配进行拼接，字段名不匹配,为NAN</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.concat([df1, df2], axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>series拼接：将上下两series拼接到一起,为了区分索引，我们在最外层定义了索引的分组情况。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.concat([s1,s2],keys=[<span class="string">&#x27;fea1&#x27;</span>,<span class="string">&#x27;fea2&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="左右合并"><a href="#左右合并" class="headerlink" title="左右合并"></a>左右合并</h5><h6 id="concat拼接-1"><a href="#concat拼接-1" class="headerlink" title="concat拼接"></a>concat拼接</h6><ul>
-<li>dataframe拼接：直接将左右两dataframe拼接到一起，行数不匹配为NAN</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data1 = [[<span class="string">&#x27;Alex&#x27;</span>, <span class="number">10</span>], [<span class="string">&#x27;Bob&#x27;</span>, <span class="number">12</span>], [<span class="string">&#x27;Clarke&#x27;</span>, <span class="number">13</span>],[<span class="string">&quot;jack&quot;</span>,<span class="number">12</span>]]</span><br><span class="line">data2 = [[<span class="string">&#x27;Alex&#x27;</span>, <span class="number">10</span>,<span class="number">1</span>], [<span class="string">&#x27;Bob&#x27;</span>, <span class="number">12</span>,<span class="number">2</span>], [<span class="string">&#x27;Clarke&#x27;</span>, <span class="number">13</span>,<span class="number">3</span>]]</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(data2, columns=[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>,<span class="string">&quot;height&quot;</span>], dtype=<span class="built_in">float</span>)</span><br><span class="line">df2 = pd.DataFrame(data1, columns=[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>], dtype=<span class="built_in">float</span>)  </span><br><span class="line"></span><br><span class="line">df3 = pd.concat([df1, df2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>series拼接：并集的形式拼接，on &#x3D; index</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.concat([s1, s2], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="merge连结"><a href="#merge连结" class="headerlink" title="merge连结"></a>merge连结</h6><p>基于column连接</p>
-<ul>
-<li><p>how：连接方式</p>
-<ul>
-<li>inner ：内连接</li>
-<li>outer ：外连接</li>
-<li>left ：左连接</li>
-<li>right ：右连接</li>
-</ul>
-</li>
-<li><p>连接关键词：</p>
-<ul>
-<li><p>方式一：</p>
-<ul>
-<li>on :  on&#x3D;’alpha’,两dataframe以“alpha”列连接</li>
-</ul>
-</li>
-<li><p>方式二：</p>
-<ul>
-<li><p>left_on：left_on&#x3D;’beta’，左dataframe的关键词    </p>
-</li>
-<li><p>right_on :  right_on &#x3D;’beta’，右dataframe的关键词   </p>
-</li>
-<li><p>right_index：right_index&#x3D;True，以左dataframe的index为关键词</p>
-</li>
-<li><p>left_index ：left_index&#x3D;True，以右dataframe的index为关键词</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>内连接</p>
-<p>how&#x3D;‘inner’，on&#x3D;设置连接的共有列名。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.merge(df1,df2,how=<span class="string">&#x27;inner&#x27;</span>,on=<span class="string">&#x27;alpha&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>外连接</p>
-<p>how&#x3D;‘outer’，dataframe的链接方式为外连接，我们可以理解基于共同列的并集进行连接，参数on设置连接的共有列名。若两个dataframe间除了on设置的连接列外并无相同列，则该列的值置为NaN。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5 = pd.merge(df1,df2,how=<span class="string">&#x27;outer&#x27;</span>,on=<span class="string">&#x27;alpha&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>左连接</p>
-<p>因为df2的连接列alpha有两个’A’值，所以左连接的df5有两个’A’值，若两个dataframe间除了on设置的连接列外并无相同列，则该列的值置为NaN。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5 = pd.merge(df1,df2,how=<span class="string">&#x27;left&#x27;</span>,on=<span class="string">&#x27;alpha&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>右连接</p>
-<p>因为df1的连接列alpha有两个’B’值，所以右连接的df6有两个’B’值。若两个dataframe间除了on设置的连接列外并无相同列，则该列的值置为NaN。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df6 = pd.merge(df1,df2,how=<span class="string">&#x27;right&#x27;</span>,on=<span class="string">&#x27;alpha&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基于多列连接</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df8 = pd.merge(df1,df2,on=[<span class="string">&#x27;alpha&#x27;</span>,<span class="string">&#x27;beta&#x27;</span>],how=<span class="string">&#x27;right&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基于index连接</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df9 = pd.merge(df1,df2,how=<span class="string">&#x27;inner&#x27;</span>,left_on=<span class="string">&#x27;beta&#x27;</span>,right_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="12-导出"><a href="#12-导出" class="headerlink" title="12.导出"></a>12.导出</h3><h5 id="导出到数据库"><a href="#导出到数据库" class="headerlink" title="导出到数据库"></a>导出到数据库</h5><ul>
-<li>table_name : 数据库表名</li>
-<li>con               ：数据库连接</li>
-<li>if_exists        ： append（如果表已经存在，执行添加）   replace（如果存在，则替换）</li>
-<li>index             ：是否重置索引</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_excel_path.to_sql(table_name, con=conn, if_exists=<span class="string">&#x27;append&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h3><h5 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h5><p>浅复制有两种方式：一是，df1 &#x3D; df；二是，df1 &#x3D; df.copy(deep&#x3D;False)。</p>
-<p>即df1与df所指向的数据地址是同一个地址，其中一个变量发生变化，另一个变量对应的元素也会发生变化。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1 = df.copy(deep=False)</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h5><p>dataframe类型数据深复制的方式为：df2 &#x3D; df.copy(deep&#x3D;True)。</p>
-<p>即df2重新开辟内存空间存放df2的数据，df2的数据元素等于df的数据原始，df与df2所指向数据的地址不一样，仅对应位置元素一样，故其中一个变量名中的元素发生变化，另一个不会随之发生变化。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2 = df.copy(deep=True)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h3><hr>
-<h4 id="时间计算"><a href="#时间计算" class="headerlink" title="时间计算"></a>时间计算</h4><h5 id="时间差"><a href="#时间差" class="headerlink" title="时间差"></a>时间差</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">#方法一：</span><br><span class="line">#先利用to_datetime转换为时间格式，tm列的数据形式为&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span><br><span class="line">df[&#x27;tm_1&#x27;] = pd.to_datetime(df[&#x27;tm_1&#x27;])</span><br><span class="line">df[&#x27;tm_2&#x27;] = pd.to_datetime(df[&#x27;tm_2&#x27;])</span><br><span class="line">#利用&quot;.dt.seconds&quot;转换为秒，除以相对于的间隔数得到分钟、小时等</span><br><span class="line">df[&#x27;diff_time&#x27;] = (df[&#x27;tm_1&#x27;] - df[&#x27;tm_2&#x27;]).dt.seconds/60</span><br><span class="line">#利用round函数可进行四舍五入</span><br><span class="line">df[&#x27;diff_time&#x27;] = round(df[&#x27;diff_time&#x27;])</span><br><span class="line"></span><br><span class="line">#方法二，日期相减变为小时；变为天的话将h替换为D即可：</span><br><span class="line">df[&#x27;diff_time&#x27;] = (df[&#x27;tm_1&#x27;] - df[&#x27;tm_2&#x27;]).values/np.timedelta64(1, &#x27;h&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data[&#x27;L&#x27;] = pd.to_datetime(data[&#x27;LOAD_TIME&#x27;])-pd.to_datetime(data[&#x27;FFP_DATE&#x27;])</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;精度到月&#x27;&#x27;&#x27;</span><br><span class="line">data[&#x27;L&#x27;] = data[&#x27;L&#x27;].map(lambda x: x/np.timedelta64(1,&#x27;M&#x27;))</span><br><span class="line">data[&#x27;L&#x27;] = data[&#x27;L&#x27;].map(lambda x: x/np.timedelta64(30,&#x27;D&#x27;))</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;精度到日&#x27;&#x27;&#x27;</span><br><span class="line">data[&#x27;L&#x27;] = data[&#x27;L&#x27;].map(lambda x: x/np.timedelta64(1,&#x27;D&#x27;))</span><br><span class="line"></span><br><span class="line">输出小时</span><br><span class="line">data[&#x27;L&#x27;] = data[&#x27;L&#x27;].map(lambda x: x/np.timedelta64(1,&#x27;h&#x27;))</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="时间间隔"><a href="#时间间隔" class="headerlink" title="时间间隔"></a>时间间隔</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">impor</span><br><span class="line"></span><br><span class="line">--加一天</span><br><span class="line">df[&#x27;data_date&#x27;] + pd.Timedelta(days=1)</span><br><span class="line"> </span><br><span class="line">--减一天</span><br><span class="line">df[&#x27;data_date&#x27;] - pd.Timedelta(days=1)</span><br><span class="line"></span><br><span class="line">--加1天</span><br><span class="line">df1[&quot;start_time&quot;] = df1.apply(lambda x : x.start_time + datetime.timedelta(days=1),axis=1)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h4><h4 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h4><hr>
-<h5 id="增"><a href="#增" class="headerlink" title="增"></a>增</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df.to_sql(</span><br><span class="line">    &#x27;jd&#x27;,  # 表名</span><br><span class="line">    con=con,  </span><br><span class="line">    index=False,  # 是否插入 index</span><br><span class="line">    if_exists=&#x27;append&#x27;  # 如果存在, 在存在的表后面追加</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/images%5C20200812101108922.png"></p>
-<h5 id="删"><a href="#删" class="headerlink" title="删"></a>删</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#  执行sql: 增(insert)/删(delete)/改(update)操作</span><br><span class="line">con.execute(&quot;delete from 表名 where id=1&quot;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="查"><a href="#查" class="headerlink" title="查"></a>查</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 读sql</span><br><span class="line"># 方法1</span><br><span class="line">df1 = pd.read_sql(&#x27;表名&#x27;, con=con, columns=[&#x27;列名1&#x27;, &#x27;列名2&#x27;])</span><br><span class="line"># 方法2</span><br><span class="line">df2 = pd.read_sql(&quot;select 列名1,列名2 from 表名&quot;, con=con)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images%5C20200812101232818.png"></p>
-<h5 id="改"><a href="#改" class="headerlink" title="改"></a>改</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#  执行sql: 增(insert)/删(delete)/改(update)操作</span><br><span class="line">con.execute(&quot;delete from 表名 where id=1&quot;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="增强insert-replace"><a href="#增强insert-replace" class="headerlink" title="增强insert(replace)"></a>增强insert(replace)</h4><p>MySQL replace into 用法（insert into 的增强版）</p>
-<p><strong>replace into</strong> 跟 insert 功能类似，不同点在于：<strong>replace into</strong> 首先尝试插入数据到表中， 1. 如果发现表中已经有此行数据（根据主键或者唯一索引判断）则先删除此行数据，然后插入新的数据。 2. 否则，直接插入新数据。</p>
-<p>要注意的是：插入数据的表必须有主键或者是唯一索引！否则的话，<strong>replace into</strong> 会直接插入数据，这将导致表中出现重复的数据。</p>
-<p>MySQL replace into 有三种形式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. replace into tbl_name(col_name, ...) values(...)</span><br><span class="line">2. replace into tbl_name(col_name, ...) select ...</span><br><span class="line">3. replace into tbl_name set col_name=value, ...</span><br></pre></td></tr></table></figure>
-
-
-
-<p>实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">USER_TABLE_NAME = &#x27;UserInfo&#x27;</span><br><span class="line"># dft 是一个 dataframe 数据集</span><br><span class="line">dft.to_sql(&#x27;temp&#x27;, engine, if_exists=&#x27;replace&#x27;, index=False) # 把新数据写入 temp 临时表(k&#x27;y)</span><br><span class="line">connection = conn.cursor()</span><br><span class="line"># 替换数据的语句</span><br><span class="line">args1 = f&quot;&quot;&quot; REPLACE INTO &quot;&#123;USER_TABLE_NAME&#125;&quot;</span><br><span class="line">             SELECT * FROM &quot;temp&quot;</span><br><span class="line">         &quot;&quot;&quot;</span><br><span class="line">connection.execute(args1) </span><br><span class="line">args2 = &quot;&quot;&quot; DROP Table If Exists &quot;temp&quot; &quot;&quot;&quot; # 把临时表删除</span><br><span class="line">connection.execute(args2)</span><br><span class="line">connection.close()</span><br><span class="line">conn.commit()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="类型格式"><a href="#类型格式" class="headerlink" title="类型格式"></a>类型格式</h3><p><img src="/%5Cimages%5CSnipaste_2023-06-21_16-22-30.png"></p>
-
+          
       
     </div>
 
@@ -787,7 +245,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yfjl-code.github.io/2023/09/29/about/">
+    <link itemprop="mainEntityOfPage" href="https://yfjl-code.github.io/2024/10/29/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/icon.png">
@@ -805,7 +263,10 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/29/about/" class="post-title-link" itemprop="url">about</a>
+          
+              <span class="post-sticky-flag" title="置顶">
+                <i class="fa fa-thumbtack"></i>
+              </span><a href="/2024/10/29/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Pandas数据清洗</a>
         </h2>
 
         <div class="post-meta-container">
@@ -815,9 +276,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-09-29 20:38:08 / 修改时间：21:50:27" itemprop="dateCreated datePublished" datetime="2023-09-29T20:38:08+08:00">2023-09-29</time>
+      <time title="创建时间：2024-10-29 20:38:08" itemprop="dateCreated datePublished" datetime="2024-10-29T20:38:08+08:00">2024-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-20 22:35:27" itemprop="dateModified" datetime="2025-08-20T22:35:27+08:00">2025-08-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -825,7 +292,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
         </span>
     </span>
 
@@ -839,7 +306,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p>记录数据处理的API</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/29/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
